@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-
 <html xmlns:th="...">
-
 <head>
-
-    <title>Locadora</title>
-
+    <title>Biblioteca</title>
 </head>
-
 <body>
+<h1 th:text="'Sistema de
+Biblioteca'"></h1>
+<nav>
+    <a th:href="@{/livros}">
+        Livros
+    </a>
+    <h1 th:text="${titulo}">
 
-<h1 th:text="${livro}">
+        Título padrão
 
-    Nome Padrão
-</h1>
+    </h1>
+    <a th:href="@{/livros}">
 
-<p th:text="${mensagemBoasVindas}">
+        Ver Livros
+    </a>
+    <a th:text="${livro.titulo}">
+        Ver Titulo
+    </a>
 
-    Mensagem Padrão
 
-</p>
-
-<a href="#">Gerenciar Veículos</a>
-
+</nav>
 </body>
-
 </html>

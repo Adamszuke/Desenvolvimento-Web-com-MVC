@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 
 <html xmlns:th="...">
-
-<head>
-
+  <head>
     <title>Locadora</title>
+  </head>
+  <body>
+    <h1 th:text="${nomeSistema}">Nome Padrão</h1>
 
-</head>
+    <p th:text="${mensagemBoasVindas}">Mensagem Padrão</p>
 
-<body>
-
-<h1 th:text="${nomeSistema}">
-
-    Nome Padrão
-</h1>
-
-<p th:text="${mensagemBoasVindas}">
-
-    Mensagem Padrão
-
-</p>
-
-<a href="#">Gerenciar Veículos</a>
-
-</body>
-
+    <a href="#">Gerenciar Veículos</a>
+  </body>
 </html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="...">
+  <head>
+    <title>Biblioteca</title>
+  </head>
+  <body>
+    <h1
+      th:text="'Sistema de
+Biblioteca'"
+    ></h1>
+    <nav>
+      <a th:href="@{/livros}"> Livros </a>
+      <h1 th:text="${titulo}">Título padrão</h1>
+      <a th:href="@{/livros}"> Ver Livros </a>
+      <a th:text="${livro.titulo}"> Ver Titulo </a>
+    </nav>
+  </body>
+</html>

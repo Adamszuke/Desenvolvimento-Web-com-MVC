@@ -2,15 +2,26 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Form Categoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar categoria | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Cadastrar Categoria</h1>
-<form th:object="${categoria}" th:action="@{/categorias}" method="post">
-    <label>Nome:</label>
-    <input type="text" th:field="*{nome}" />
-    <button type="submit">Cadastrar</button>
-</form>
-<a th:href="@{/categorias}">Voltar</a>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <section class="card">
+        <h1>Cadastrar categoria</h1>
+        <p class="subtitle">Informe o nome da nova categoria.</p>
+        <form th:object="${categoria}" th:action="@{/categorias}" method="post">
+            <label for="nome">Nome da categoria</label>
+            <input id="nome" type="text" th:field="*{nome}"
+                   placeholder="Ex.: Romance" required>
+            <div class="actions">
+                <button type="submit">Salvar categoria</button>
+                <a class="back" th:href="@{/categorias}">Cancelar</a>
+            </div>
+        </form>
+    </section>
+</main>
 </body>
 </html>

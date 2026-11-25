@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmacao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Livro cadastrado | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Livro cadastrado!</h1>
-<p>Título:
-    <span th:text="${livro.titulo}"></span>
-</p>
-<p>Autor:
-    <span th:text="${livro.autor}"></span>
-</p>
-<p>ISBN:
-    <span th:text="${livro.isbn}"></span>
-</p>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <section class="card">
+        <h1>Livro cadastrado!</h1>
+        <p class="alert-success">O livro foi registrado com sucesso.</p>
+        <p><strong>Título:</strong> <span th:text="${livro.titulo}"></span></p>
+        <p><strong>Autor:</strong> <span th:text="${livro.autor}"></span></p>
+        <p><strong>ISBN:</strong> <span th:text="${livro.isbn}"></span></p>
+        <div class="actions">
+            <a class="primary" th:href="@{/livros}">Ver livros cadastrados</a>
+            <a class="back" th:href="@{/livros/novo}">Cadastrar outro livro</a>
+        </div>
+    </section>
+</main>
 </body>
 </html>

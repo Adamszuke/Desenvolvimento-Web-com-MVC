@@ -1,0 +1,11 @@
+com\biblioteca\biblioteca\model\Categoria.class
+com\biblioteca\biblioteca\BibliotecaApplication.class
+com\biblioteca\biblioteca\controller\LivroController.class
+com\biblioteca\biblioteca\controller\AutorController.class
+com\biblioteca\biblioteca\repository\LivroRepository.class
+com\biblioteca\biblioteca\repository\CategoriaRepository.class
+com\biblioteca\biblioteca\repository\AutorRepository.class
+com\biblioteca\biblioteca\model\Livro.class
+com\biblioteca\biblioteca\model\Autor.class
+com\biblioteca\biblioteca\controller\HomeController.class
+com\biblioteca\biblioteca\controller\CategoriaController.class

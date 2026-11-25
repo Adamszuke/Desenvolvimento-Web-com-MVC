@@ -1,18 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="...">
-  <head>
-    <title>Biblioteca</title>
-  </head>
-  <body>
-    <h1
-      th:text="'Sistema de
-Biblioteca'"
-    ></h1>
-    <nav>
-      <a th:href="@{/livros}"> Livros </a>
-      <h1 th:text="${titulo}">Título padrão</h1>
-      <a th:href="@{/livros}"> Ver Livros </a>
-      <a th:text="${livro.titulo}"> Ver Titulo </a>
-    </nav>
-  </body>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Livros | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<body>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <div class="top">
+        <div>
+            <h1>Livros</h1>
+            <p>Consulte os livros cadastrados na biblioteca.</p>
+        </div>
+        <a class="primary" th:href="@{/livros/novo}">+ Cadastrar livro</a>
+    </div>
+
+    <section class="card">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>Título</th><th>Autor</th><th>ISBN</th></tr>
+                </thead>
+                <tbody>
+                    <tr th:each="livro : ${livros}">
+                        <td th:text="${livro.id}"></td>
+                        <td th:text="${livro.titulo}"></td>
+                        <td th:text="${livro.autor}"></td>
+                        <td th:text="${livro.isbn}"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(livros)}">
+                        <td class="empty" colspan="4">Nenhum livro cadastrado. Clique em “Cadastrar livro” para começar.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <a class="back-link" th:href="@{/}">← Voltar ao início</a>
+</main>
+</body>
 </html>

@@ -2,16 +2,35 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Form Autor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${tituloPagina} + ' | Biblioteca'">Cadastro de autor | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Cadastrar Autor</h1>
-<form th:object="${autor}" th:action="@{/autores}" method="post">
-    <label>Nome:</label>
-    <input type="text" th:field="*{nome}" />
-    <label>Nacionalidade:</label>
-    <input type="text" th:field="*{nacionalidade}" />
-    <button type="submit">Cadastrar</button>
-</form>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <section class="card">
+        <h1 th:text="${tituloPagina}">Cadastrar autor</h1>
+        <p class="subtitle">Preencha os dados abaixo para salvar o autor.</p>
+        <p class="error" th:if="${erro}" th:text="${erro}"></p>
+
+        <form th:object="${autor}" th:action="@{/autores}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <label for="nome">Nome completo</label>
+            <input id="nome" type="text" th:field="*{nome}"
+                   placeholder="Ex.: Machado de Assis" maxlength="150" required>
+
+            <label for="nacionalidade">Nacionalidade</label>
+            <input id="nacionalidade" type="text" th:field="*{nacionalidade}"
+                   placeholder="Ex.: Brasileira" maxlength="80" required>
+
+            <div class="actions">
+                <button type="submit">Salvar autor</button>
+                <a class="back" th:href="@{/autores}">Cancelar</a>
+            </div>
+        </form>
+    </section>
+</main>
 </body>
 </html>

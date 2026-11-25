@@ -2,24 +2,50 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Autores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autores | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Autores</h1>
-<a th:href="@{/autores/novo}">Cadastrar Autor</a>
-<table border="1">
-    <thead>
-        <tr><th>Nome</th><th>Nacionalidade</th><th>Ação</th></tr>
-            </thead>
-            <tbody>
-                <tr th:each="autor : ${autores}">
-            <td th:text="${autor.nome}"></td>
-            <td th:text="${autor.nacionalidade}"></td>
-            <td>
-                <a th:href="@{/autores/excluir/{id}(id=${autor.id})}">Excluir</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <div class="top">
+        <div>
+            <h1>Autores</h1>
+            <p>Gerencie os autores cadastrados na biblioteca.</p>
+        </div>
+        <a class="primary" th:href="@{/autores/novo}">+ Cadastrar autor</a>
+    </div>
+
+    <section class="card">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>Nome</th><th>Nacionalidade</th><th>Ações</th></tr>
+                </thead>
+                <tbody>
+                    <tr th:each="autor : ${autores}">
+                        <td th:text="${autor.id}"></td>
+                        <td th:text="${autor.nome}"></td>
+                        <td th:text="${autor.nacionalidade}"></td>
+                        <td>
+                            <div class="actions">
+                                <a class="edit" th:href="@{/autores/editar/{id}(id=${autor.id})}">Editar</a>
+                                <form th:action="@{/autores/excluir/{id}(id=${autor.id})}" method="post"
+                                      onsubmit="return confirm('Deseja realmente excluir este autor?');">
+                                    <button class="delete" type="submit">Excluir</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(autores)}">
+                        <td class="empty" colspan="4">Nenhum autor cadastrado. Clique em “Cadastrar autor” para começar.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <a class="back-link" th:href="@{/}">← Voltar ao início</a>
+</main>
 </body>
 </html>

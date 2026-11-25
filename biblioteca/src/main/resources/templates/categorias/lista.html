@@ -2,23 +2,41 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Categorias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categorias | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Categorias</h1>
-<a th:href="@{/categorias/novo}">Cadastrar Categoria</a>
-<table border="1">
-    <thead>
-        <tr><th>Nome</th><th>Ação</th></tr>
-    </thead>
-    <tbody>
-        <tr th:each="categoria : ${categorias}">
-            <td th:text="${categoria.nome}"></td>
-            <td>
-                <a th:href="@{/categorias/excluir/{id}(id=${categoria.id})}">Excluir</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <div class="top">
+        <div>
+            <h1>Categorias</h1>
+            <p>Consulte e organize as categorias dos livros.</p>
+        </div>
+        <a class="primary" th:href="@{/categorias/novo}">+ Cadastrar categoria</a>
+    </div>
+
+    <section class="card">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Nome</th><th>Ação</th></tr></thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.nome}"></td>
+                        <td>
+                            <a class="btn-danger" th:href="@{/categorias/excluir/{id}(id=${categoria.id})}"
+                               onclick="return confirm('Deseja realmente excluir esta categoria?');">Excluir</a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(categorias)}">
+                        <td class="empty" colspan="2">Nenhuma categoria cadastrada.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <a class="back-link" th:href="@{/}">← Voltar ao início</a>
+</main>
 </body>
 </html>

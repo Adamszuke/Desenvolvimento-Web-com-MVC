@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar livro | Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Cadastrar Livro</h1>
-<form th:object="${livro}" action="/livros" method="post">
-    <label>Título:</label>
-    <input type="text" th:field="*{titulo}" />
-    <label>Autor:</label>
-    <input type="text" th:field="*{autor}" />
-    <label>ISBN:</label>
-    <input type="text" th:field="*{isbn}" />
-    <button type="submit">
-        Cadastrar
-    </button>
-</form>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <section class="card">
+        <h1>Cadastrar livro</h1>
+        <p class="subtitle">Preencha os dados abaixo para adicionar um livro à biblioteca.</p>
+
+        <form th:object="${livro}" th:action="@{/livros}" method="post">
+            <label for="titulo">Título</label>
+            <input id="titulo" type="text" th:field="*{titulo}"
+                   placeholder="Ex.: Dom Casmurro" required>
+
+            <label for="autor">Autor</label>
+            <input id="autor" type="text" th:field="*{autor}"
+                   placeholder="Ex.: Machado de Assis" required>
+
+            <label for="isbn">ISBN</label>
+            <input id="isbn" type="text" th:field="*{isbn}"
+                   placeholder="Informe o ISBN">
+
+            <div class="actions">
+                <button type="submit">Salvar livro</button>
+                <a class="back" th:href="@{/livros}">Cancelar</a>
+            </div>
+        </form>
+    </section>
+</main>
 </body>
 </html>

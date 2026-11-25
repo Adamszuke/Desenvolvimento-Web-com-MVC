@@ -1,14 +1,38 @@
 <!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Início | Sistema de Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<body>
+<header><a th:href="@{/}">Sistema de Biblioteca</a></header>
+<main>
+    <div class="page-heading">
+        <div>
+            <h1>Bem-vindo à Biblioteca</h1>
+            <p class="subtitle">Escolha uma área para gerenciar os registros do sistema.</p>
+        </div>
+    </div>
 
-<html xmlns:th="...">
-  <head>
-    <title>Locadora</title>
-  </head>
-  <body>
-    <h1 th:text="${nomeSistema}">Nome Padrão</h1>
-
-    <p th:text="${mensagemBoasVindas}">Mensagem Padrão</p>
-
-    <a href="#">Gerenciar Veículos</a>
-  </body>
+    <section class="grid">
+        <article class="item">
+            <h2>Autores</h2>
+            <p>Cadastre, consulte, edite e exclua os autores da biblioteca.</p>
+            <a class="primary" th:href="@{/autores}">Gerenciar autores</a>
+        </article>
+        <article class="item">
+            <h2>Categorias</h2>
+            <p>Consulte e cadastre as categorias utilizadas para organizar os livros.</p>
+            <a class="primary" th:href="@{/categorias}">Gerenciar categorias</a>
+        </article>
+        <article class="item">
+            <h2>Livros</h2>
+            <p>Cadastre livros e consulte os registros existentes no sistema.</p>
+            <a class="primary" th:href="@{/livros}">Gerenciar livros</a>
+        </article>
+    </section>
+</main>
+</body>
 </html>
